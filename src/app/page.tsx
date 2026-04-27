@@ -32,7 +32,7 @@ export default function Home() {
       {/* HEADER & HERO WRAPPER */}
       <div className={`${styles.wrapper} min-h-screen flex flex-col`}>
         <header className={styles.header}>
-          <div className={styles.logo}>rifqi.</div>
+          <div className={styles.logo}></div>
 
           <div className={styles.navPill} ref={menuRef}>
             <nav className={`${styles.navLinks} ${isOpen ? styles.open : ""}`}>
@@ -213,25 +213,27 @@ export default function Home() {
             <div className={styles.projectCard}>
               <div className={styles.cardImage}>
                 <Image
-                  src="/next.svg"
+                  src="/Portfolio.png"
                   alt="Auth System"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-left"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Multi-Role Auth System</h3>
+                <h3 className={styles.cardTitle}>Next.js Developer Portfolio</h3>
                 <p className={styles.cardDesc}>
-                  A secure multi-role authentication and route protection system
-                  utilizing NextAuth.js with Credentials Provider and Firebase
-                  integration.
+                  My personal portfolio website designed to highlight my web
+                  development journey. Built with Next.js for optimal
+                  performance, featuring dynamic routing, interactive UI
+                  components, and integrated links to my GitHub and Kaggle
+                  profiles
                 </p>
                 <div className={styles.cardActions}>
                   <a href="#" target="_blank" className={styles.btnPrimary}>
                     <LinkIcon /> Live
                   </a>
-                  <a href="#" target="_blank" className={styles.btnSecondary}>
+                  <a href="https://github.com/ItsQii/web-portofolio.git" target="_blank" className={styles.btnSecondary}>
                     <GithubIcon /> Repo
                   </a>
                 </div>
