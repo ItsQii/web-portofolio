@@ -19,8 +19,8 @@ export default function Home() {
 
   useEffect(() => {
     const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) { 
+      if (typeof window !== "undefined") {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
           setIsVisible(false);
         } else {
           setIsVisible(true);
@@ -29,8 +29,8 @@ export default function Home() {
       }
     };
 
-    window.addEventListener('scroll', controlNavbar);
-    return () => window.removeEventListener('scroll', controlNavbar);
+    window.addEventListener("scroll", controlNavbar);
+    return () => window.removeEventListener("scroll", controlNavbar);
   }, [lastScrollY]);
 
   useEffect(() => {
@@ -48,12 +48,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       {/* HEADER: Hanya berisi navigasi di sisi kanan */}
-      <header className={`${styles.header} ${isVisible ? styles.headerVisible : styles.headerHidden}`}>
+      <header
+        className={`${styles.header} ${isVisible ? styles.headerVisible : styles.headerHidden}`}
+      >
         <div className={styles.navPill} ref={menuRef}>
           <nav className={`${styles.navLinks} ${isOpen ? styles.open : ""}`}>
-            <a href="#home" onClick={() => setIsOpen(false)}>Home</a>
-            <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
-            <a href="#about" onClick={() => setIsOpen(false)}>About Me</a>
+            <a href="#home" onClick={() => setIsOpen(false)}>
+              Home
+            </a>
+            <a href="#projects" onClick={() => setIsOpen(false)}>
+              Projects
+            </a>
+            <a href="#about" onClick={() => setIsOpen(false)}>
+              About Me
+            </a>
           </nav>
           <button
             className={`${styles.toggleBtn} ${isOpen ? styles.active : ""}`}
@@ -62,16 +70,46 @@ export default function Home() {
           >
             <MoreIcon />
           </button>
-          <div className={`${styles.dropdownCard} ${isOpen ? styles.visible : ""}`}>
+          <div
+            className={`${styles.dropdownCard} ${isOpen ? styles.visible : ""}`}
+          >
             <div className={styles.socialList}>
-              <SocialLink icon={GithubIcon} label="Github" href="https://github.com/ItsQii" />
-              <SocialLink icon={KaggleIcon} label="Kaggle" href="https://www.kaggle.com/ahmadrifqih" />
-              <SocialLink icon={DribbbleIcon} label="Dribbble" href="https://dribbble.com/ahmad-rifqi-hendriansyah" />
-              <SocialLink icon={LinkedInIcon} label="LinkedIn" href="https://www.linkedin.com/in/ahmad-rifqi-hendriansyah-a29853287" />
+              <SocialLink
+                icon={GithubIcon}
+                label="Github"
+                href="https://github.com/ItsQii"
+              />
+              <SocialLink
+                icon={KaggleIcon}
+                label="Kaggle"
+                href="https://www.kaggle.com/ahmadrifqih"
+              />
+              <SocialLink
+                icon={DribbbleIcon}
+                label="Dribbble"
+                href="https://dribbble.com/ahmad-rifqi-hendriansyah"
+              />
+              <SocialLink
+                icon={LinkedInIcon}
+                label="LinkedIn"
+                href="https://www.linkedin.com/in/ahmad-rifqi-hendriansyah-a29853287"
+              />
             </div>
             <div className={styles.themeToggles}>
-              <button onClick={() => setTheme("dark")} className={theme === "dark" ? "text-indigo-400" : ""} aria-label="Dark Mode"><MoonIcon /></button>
-              <button onClick={() => setTheme("light")} className={theme === "light" ? "text-orange-400" : ""} aria-label="Light Mode"><SunIcon /></button>
+              <button
+                onClick={() => setTheme("dark")}
+                className={theme === "dark" ? "text-indigo-400" : ""}
+                aria-label="Dark Mode"
+              >
+                <MoonIcon />
+              </button>
+              <button
+                onClick={() => setTheme("light")}
+                className={theme === "light" ? "text-orange-400" : ""}
+                aria-label="Light Mode"
+              >
+                <SunIcon />
+              </button>
             </div>
           </div>
         </div>
@@ -82,11 +120,22 @@ export default function Home() {
         <main className="flex w-full flex-1 items-center">
           <div className={styles.contentLeft}>
             <div className={styles.profileImageWrapper}>
-              <Image src="/rifqi.jpeg" alt="Rifqi Portfolio Profile" width={120} height={120} priority />
+              <Image
+                src="/rifqi.jpeg"
+                alt="Rifqi Portfolio Profile"
+                width={120}
+                height={120}
+                priority
+              />
             </div>
-            <h1 className={styles.heading}>Hi I&apos;m Rifqi, Front-end Developer</h1>
+            <h1 className={styles.heading}>
+              Hi, I'm Rifqi <br />
+              Front-end Developer
+            </h1>
             <p className={styles.description}>
-              Saya adalah mahasiswa Teknik Informatika yang berspesialisasi dalam pengembangan web menggunakan Next.js.
+              Saya mahasiswa Teknik Informatika yang mendalami pengembangan web
+              menggunakan Next.js, Fokus saya adalah menciptakan antarmuka
+              responsif dan visual yang bagus
             </p>
           </div>
         </main>
@@ -213,12 +262,6 @@ export default function Home() {
               spesialisasi dalam membangun antarmuka pengguna yang responsif
               menggunakan <strong>React</strong>, <strong>Next.js</strong>, dan{" "}
               <strong>Tailwind CSS</strong>.
-            </p>
-            <p>
-              Selain estetika, saya juga memahami pengembangan sisi back-end
-              menggunakan <strong>Laravel</strong> dan <strong>Node.js</strong>.
-              Saya sangat menghargai penulisan kode yang bersih (clean code)
-              serta implementasi keamanan sistem yang optimal.
             </p>
           </div>
 
