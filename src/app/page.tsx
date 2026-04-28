@@ -231,7 +231,10 @@ export default function Home() {
                   menggunakan Next.js.
                 </p>
                 <div className={styles.cardActions}>
-                  <a href="#" className={styles.btnPrimary}>
+                  <a
+                    href="https://rifqi-portfolio-seven.vercel.app"
+                    className={styles.btnPrimary}
+                  >
                     <LinkIcon /> Live
                   </a>
                   <a
