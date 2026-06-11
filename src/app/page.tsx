@@ -164,7 +164,7 @@ export default function Home() {
                 </p>
                 <div className={styles.cardActions}>
                   <a
-                    href="https://smart-eco-campus-flax.vercel.app"
+                    href="https://smarteco-app.my.id"
                     target="_blank"
                     className={styles.btnPrimary}
                   >
