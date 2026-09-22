@@ -1,61 +1,271 @@
 @import "tailwindcss";
+@source "../../public/p3r-menu.js";
 
-/* 1. Smooth Scroll untuk navigasi anchor (#projects) */
+@font-face {
+  font-family: "Rodin Pro";
+  src: url("/fonts/Rodin%20Pro%20EB.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rodin Pro Medium";
+  src: url("/fonts/Rodin%20Pro%20DB.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rodin Pro Bold";
+  src: url("/fonts/Rodin%20Pro%20UB.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NewRodin Pro";
+  src: url("/fonts/NewRodin%20Pro%20DB.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Skip Std B";
+  src: url("/fonts/Skip%20Std%20B.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-fg: #fff;
+  --color-bg: #015fcc;
+  --color-bg-dark: #031f64;
+  --color-red: #f00;
+  --color-muted: #808080;
+  --color-pink: #fd77d9;
+  --color-button-1: #16cffb;
+  --color-button-2: #7de6fd;
+  --color-button-3: #77fefc;
+  --color-border: #5d6a88;
+  --font-rodin: "Rodin Pro Bold", sans-serif;
+  --font-rodin-bold: "Rodin Pro Bold", sans-serif;
+  --font-new-rodin: "NewRodin Pro", sans-serif;
+  --font-skip: "Skip Std B", sans-serif;
+  --text-shadow-under: 0 1px 6px rgb(0 0 0 / 0.5), 0 -1px 6px rgb(0 0 0 / 0.5), 1px 0 6px rgb(0 0 0 / 0.5), -1px 0 6px rgb(0 0 0 / 0.5);
+  --shadow-under: 0 1px 6px rgb(0 0 0 / 0.5), 0 -1px 6px rgb(0 0 0 / 0.5), 1px 0 6px rgb(0 0 0 / 0.5), -1px 0 6px rgb(0 0 0 / 0.5);
+  --text-shadow-border: 0 2px 0 var(--color-border), 0 -2px 0 var(--color-border), 2px 0 0 var(--color-border), -2px 0 0 var(--color-border), -2px -2px 0 var(--color-border), 2px -2px 0 var(--color-border), 2px 2px 0 var(--color-border), -2px 2px 0 var(--color-border), 0 1px 6px rgb(0 0 0 / 0.5), 0 -1px 6px rgb(0 0 0 / 0.5), 1px 0 6px rgb(0 0 0 / 0.5), -1px 0 6px rgb(0 0 0 / 0.5);
+  --shadow-red: 3px -6px 0 var(--color-red);
+}
+
+@utility masked-text {
+  mask: url(#selector-mask);
+  -webkit-mask: url(#selector-mask);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+/* ==========================================================================
+   PERSONA 3 RELOAD — DESIGN TOKENS
+   ========================================================================== */
+@theme static {
+  --color-void: #04081a;
+  --color-abyss: #070d24;
+  --color-trench: #0c1433;
+
+  --color-volt-900: #081458;
+  --color-volt-800: #0d1f8f;
+  --color-volt-700: #1230c4;
+  --color-volt-600: #1a3ee0;
+  --color-volt-500: #2049e6;
+  --color-volt-400: #3d6bff;
+  --color-volt-300: #6b92ff;
+  --color-volt-200: #a3bcff;
+
+  --color-signal: #5fe0ff;
+  --color-signal-soft: #a8effd;
+
+  --color-ink: #04081a;
+  --color-paper: #ffffff;
+
+  --ease-snap: cubic-bezier(0.2, 0, 0, 1);
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-hard: cubic-bezier(0.7, 0, 0.84, 0);
+
+  --animate-halftone-drift: halftone-drift 24s linear infinite;
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-streak: streak 14s ease-in-out infinite;
+  --animate-edge-pulse: edge-pulse 2.4s ease-in-out infinite;
+}
+
+@theme static inline {
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-ui: var(--font-chakra), system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+
+  --dur-instant: 80ms;
+  --dur-fast: 140ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --dur-wipe: 420ms;
+
+  --stagger: 40ms;
+
+  --skew-slab: -10deg;
+  --skew-slab-invert: 10deg;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* 2. Variabel Warna untuk Tema Blue-Space kamu */
-:root {
-  --background: #ffffff;
-  --foreground: #1d1d1f;
-}
-
-/* Selector ini wajib ada agar tombol di website bisa memaksa mode gelap */
-.dark {
-  --background: #020617;
-  --foreground: #ffffff;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-/* 3. Reset Body agar transisi warna background halus */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, sans-serif;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  background-color: var(--color-void);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* 4. Perbaikan untuk Link agar tidak ada garis bawah default */
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
-/* 5. Sembunyikan Scrollbar secara paksa tapi tetap bisa di-scroll */
+::selection {
+  background-color: var(--color-volt-500);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
 * {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-volt-700) transparent;
 }
 
-*::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
-/* Untuk Internet Explorer dan Edge */
-html, body {
-  -ms-overflow-style: none;
-}
-
-/* Untuk Chrome, Safari, dan Opera */
 ::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+  height: 10px;
 }
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-volt-700);
+  border: 3px solid var(--color-void);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-volt-500);
+}
+
+body[data-scroll-locked="true"] {
+  overflow: hidden;
+}
+
+@keyframes halftone-drift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 120px 120px, -80px 60px;
+  }
+}
+
+@keyframes scanline {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes streak {
+  0%, 100% {
+    opacity: 0.25;
+    transform: translate3d(0, 0, 0) skewX(-18deg);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate3d(4%, -2%, 0) skewX(-18deg);
+  }
+}
+
+@keyframes edge-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgb(95 224 255 / 0.5);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 18px 2px rgb(95 224 255 / 0.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  :root {
+    --skew-slab: 0deg;
+    --skew-slab-invert: 0deg;
+    --stagger: 0ms;
+  }
+}
+
+p3r-pause-menu {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+@layer base {
+  p3r-pause-menu,
+  p3r-pause-menu main {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-rodin);
+  }
+}
+
+p3r-pause-menu main > .absolute.rotate-90 {
+  font-size: 35vh !important;
+}
+
+@media (min-width: 768px) {
+  p3r-pause-menu main > .absolute.left-20 {
+    left: 38vw !important;
+  }
+}
+
+
+

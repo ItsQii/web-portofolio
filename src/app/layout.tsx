@@ -1,21 +1,33 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo, Chakra_Petch } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./provider"; // Pastikan nama filenya provider.tsx atau providers.tsx
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* Archivo: variable (100-900), bold-condensed grotesque. Carries display +
+   body. No `weight` needed for variable fonts. */
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/* Chakra Petch: angular, cut-corner game-UI feel. Static family, so `weight`
+   is required. Used for labels, stats and numerals. */
+const chakraPetch = Chakra_Petch({
+  variable: "--font-chakra",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Rifqi | Portfolio",
-  description: "Web Developer Portfolio",
+  title: "Rifqi | Front-end Developer",
+  description:
+    "Portfolio of Ahmad Rifqi Hendriansyah — front-end developer building responsive interfaces with React, Next.js and Tailwind CSS.",
+};
+
+/* themeColor and colorScheme must live on the viewport export: both have been
+   deprecated on `metadata` since Next 14. */
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#04081a",
 };
 
 export default function RootLayout({
@@ -24,18 +36,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    /* suppressHydrationWarning wajib ada di <html> untuk next-themes */
-    <html 
-      lang="en" 
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    <html
+      lang="en"
+      /* Next 16 no longer neutralises scroll-behavior during navigation, so the
+         global `smooth` in globals.css is opted into explicitly. */
+      data-scroll-behavior="smooth"
+      className={`${archivo.variable} ${chakraPetch.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        {/* Providers membungkus children agar fitur dark/light mode aktif di semua halaman */}
-        <Providers>
-          {children}
-        </Providers>
-      </body>
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }
