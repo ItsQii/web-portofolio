@@ -140,16 +140,18 @@ export function PauseMenu() {
           top: '20px',
           right: '20px',
           zIndex: 9998,
-          background: '#015FCC',
-          color: '#fff',
+          background: '#07152f',
+          color: '#5fe0ff',
           border: '2px solid #5fe0ff',
           padding: '10px 20px',
-          fontWeight: 'bold',
+          fontWeight: 800,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
           cursor: 'pointer',
           boxShadow: '3px -3px 0px #F00',
         }}
       >
-        PAUSE MENU
+        MENU
       </button>
 
       {/* OVERLAY FULLSCREEN */}
