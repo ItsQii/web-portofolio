@@ -94,9 +94,11 @@ export function PauseMenu() {
         skill: '#skill',
         'recent project': '#history-project',
         'history project': '#history-project',
-        'social link': '#contact',
-        contact: '#contact',
-        'social links': '#contact',
+        'history-project': '#history-project',
+        'social link': '#social-link',
+        'social-link': '#social-link',
+        'social links': '#social-link',
+        contact: '#social-link',
       };
 
       const section = sectionMap[normalized];

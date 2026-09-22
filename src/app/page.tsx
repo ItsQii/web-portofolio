@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { PauseMenu } from "@/components/menu/PauseMenu";
 import { GithubIcon, ICON_MAP, LinkIcon, StarIcon } from "@/components/icons";
-import { CONTACT, EXPERIENCES, PROFILE, PROJECTS, SKILLS } from "@/lib/data";
+import { EXPERIENCES, PROFILE, PROJECTS, SKILLS, SOCIALS } from "@/lib/data";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
 
           <p className={styles.eyebrow}>{PROFILE.role}</p>
           <h1 className={styles.heading}>
-            Hi, I&apos;m {PROFILE.shortName}
+            Hi, I&apos;m {PROFILE.shortName}{" "}
             <span className={styles.headingAccent}>{PROFILE.role}</span>
           </h1>
           <p className={styles.description}>{PROFILE.tagline}</p>
@@ -162,36 +162,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- CONTACT --- */}
+      {/* --- SOCIAL LINK --- */}
       <footer id="contact" className={styles.footer}>
-        <div className={styles.contactPanel}>
-          <p className={styles.footerLead}>Contact</p>
+        <div className={styles.socialPanel}>
+          <div className={styles.sectionHead}>
+            <span className={styles.sectionIndex}>04</span>
+            <h2 className={styles.socialTitle}>Social Link</h2>
+          </div>
+
           <p className={styles.footerIntro}>
             Let&apos;s build something great together. Reach out for projects,
             collaborations, or just a quick hello.
           </p>
 
-          <ul className={styles.contactList}>
-            {CONTACT.map((item) => {
+          <div className={styles.socialGrid}>
+            {SOCIALS.map((item) => {
               const Icon = ICON_MAP[item.icon];
-              const isExternal = item.href.startsWith("http");
               return (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className={styles.contactLink}
-                    {...(isExternal
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                  >
-                    <Icon size={18} />
-                    <span className={styles.contactLabel}>{item.label}</span>
-                    <span className={styles.contactValue}>{item.value}</span>
-                  </a>
-                </li>
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialCard}
+                >
+                  <span className={styles.socialGlow} />
+                  <span className={styles.socialIconWrap}>
+                    <Icon size={26} />
+                  </span>
+                  <span className={styles.socialLabel}>{item.label}</span>
+                  <span className={styles.socialValue}>{item.handle}</span>
+                </a>
               );
             })}
-          </ul>
+          </div>
 
           <p className={styles.footerMeta}>
             {PROFILE.program} · {PROFILE.school}
